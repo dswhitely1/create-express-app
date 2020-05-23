@@ -1,8 +1,15 @@
 {
-  "name": "create-express-app",
+  "name": "@dswhitely1/create-express-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "@dswhitely1/create-express-app": "bin/create-express-app",
+    "create-express-app": "bin/create-express-app"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
