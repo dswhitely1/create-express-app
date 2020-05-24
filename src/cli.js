@@ -34,7 +34,7 @@ async function getConfig(rawArgs) {
     if (!options.typescript) {
         questions.push({
             name: 'typescript',
-            message: 'Would you like to use typescript for this project?'
+            message: 'Would you like to use typescript for this project?',
             type: 'confirm',
             default: false
         })
