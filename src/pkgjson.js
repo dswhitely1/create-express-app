@@ -75,7 +75,7 @@ export const npmSetup = async options => {
             const result = await execa('git', ['init'], {
                 cwd: options.targetDirectory
             });
-
+            console.log(result)
             if (result.failed) {
                 throw new Error(`Failed to initialize Git.`)
             }
@@ -100,5 +100,6 @@ export const npmSetup = async options => {
         task: async () => addToPkgJson(options)
     }
 
-    return taskListGenerator('Initializing Project', [gitInit, gitIgnore, npmInit, packageJson, copyFiles], true)
+
+    return taskListGenerator('Initializing Project', [copyFiles, gitInit, gitIgnore, npmInit, packageJson ], true)
 }

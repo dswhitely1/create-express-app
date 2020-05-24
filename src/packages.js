@@ -2,7 +2,7 @@ import {packageListGenerator, taskListGenerator} from "./utils";
 import execa from "execa";
 
 const packages = {
-    express: ['express'],
+    express: ['express', 'dotenv'],
     middleware: ['helmet', 'cors']
 }
 
