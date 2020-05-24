@@ -14,6 +14,14 @@ async function getConfig(rawArgs) {
 
     const questions = []
 
+    questions.push({
+        name: 'pkgMgr',
+        type: 'list',
+        message: 'Choose your package manager',
+        choices: ['NPM', 'Yarn'],
+        default: 'Yarn'
+    })
+
     if (!options.directory) {
         questions.push({
             name: 'directory',
@@ -31,9 +39,10 @@ async function getConfig(rawArgs) {
         })
     }
 
-    const answers = await inquirer(questions);
+    const answers = await inquirer.prompt(questions);
 
     return {
+        pkgMgr: answers.pkgMgr,
         directory: options.directory || answers.directory,
         typescript: options.typescript || answers.typescript
     }
