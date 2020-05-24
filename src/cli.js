@@ -1,5 +1,6 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
+import {createProject} from "./main";
 
 async function getConfig(rawArgs) {
     const args = arg({
@@ -50,5 +51,5 @@ async function getConfig(rawArgs) {
 
 export async function cli(args) {
     const options = await getConfig(args);
-    console.log(options);
+    await createProject(options)
 }

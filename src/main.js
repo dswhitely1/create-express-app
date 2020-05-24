@@ -1,8 +1,8 @@
 import path from 'path';
-import execa from 'execa';
-import fs from 'fs';
 import Listr from 'listr';
-import ncp from 'ncp';
+import {npmSetup} from "./pkgjson";
+import {packageList} from "./packages";
+import chalk from "chalk";
 
 
 export const createProject = async (options) => {
@@ -16,18 +16,12 @@ export const createProject = async (options) => {
     const templateDir = path.resolve(new URL(currentUrl).pathname, '../../templates', options.template.toLowerCase());
     options.templateDirectory = templateDir;
 
+    const npm = npmSetup(options);
+    const packages = packageList(options)
 
+    const allTasks = new Listr([npm, packages]);
 
-    const packages = {
-        express: ['express'],
-        middleware: ['helmet', 'cors']
-    }
-
-    const devPackages = {
-        nodemon: ['nodemon'],
-        typescript: ['typescript', 'tsc-watch'],
-        types: ['@types/node', '@types/express', '@types/cors', '@types/helmet']
-    }
-
-
+    await allTasks.run()
+    console.log('%s Installation Complete', chalk.green.bold('DONE'));
+    return true
 }
