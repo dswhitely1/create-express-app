@@ -3,6 +3,7 @@ import ncp from 'ncp';
 import {promisify} from 'util';
 import {taskListGenerator} from "./utils";
 import chalk from "chalk";
+import execa from 'execa';
 
 const regScripts = {
     server: 'nodemon index.js',
