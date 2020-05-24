@@ -72,7 +72,9 @@ export const npmSetup = async options => {
     const gitInit = {
         title: 'Git Init',
         task: async () => {
-            const result = await execa('git', ['init']);
+            const result = await execa('git', ['init'], {
+                cwd: options.targetDirectory
+            });
 
             if (result.failed) {
                 throw new Error(`Failed to initialize Git.`)
@@ -83,7 +85,9 @@ export const npmSetup = async options => {
     const gitIgnore = {
         title: 'Generate GitIgnore',
         task: async () => {
-            const result = await execa('npx', ['gitignore', 'node'])
+            const result = await execa('npx', ['gitignore', 'node'], {
+                cwd: options.targetDirectory
+            })
             if (result.failed) {
                 throw new Error('Failed to generate gitignore file.')
             }
