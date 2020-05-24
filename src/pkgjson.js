@@ -90,7 +90,6 @@ export const npmSetup = async options => {
     }
 
     const copyFiles = await files(options)
-
     const packageJson = {
         title: 'Add Scripts to Package.JSON',
         task: async () => addToPkgJson(options)

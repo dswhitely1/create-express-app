@@ -16,9 +16,8 @@ export const createProject = async (options) => {
     const templateDir = path.resolve(new URL(currentUrl).pathname, '../../templates', options.template.toLowerCase());
     options.templateDirectory = templateDir;
 
-    const npm = npmSetup(options);
+    const npm = await npmSetup(options);
     const packages = packageList(options)
-
     const allTasks = new Listr([npm, packages]);
 
     await allTasks.run()
