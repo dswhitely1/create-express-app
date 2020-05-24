@@ -55,7 +55,7 @@ const files = async options => {
     return task;
 }
 
-export const npmSetup = options => {
+export const npmSetup = async options => {
     const npmInit = {
         title: 'NPM Init',
         task: async () => {
@@ -89,7 +89,7 @@ export const npmSetup = options => {
         }
     }
 
-    const copyFiles = files(options)
+    const copyFiles = await files(options)
 
     const packageJson = {
         title: 'Add Scripts to Package.JSON',
