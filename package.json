@@ -15,7 +15,7 @@
   },
   "keywords": [],
   "author": "Donald Whitely <dswhitely1@gmail.com> (https://www.donwhitely.com/)",
-  "license": "MIT",
+  "license": "0BSD",
   "dependencies": {
     "arg": "^4.1.3",
     "chalk": "^4.0.0",
